@@ -7,10 +7,10 @@ import online from "../../assets/images/status-online.svg"
 import clock from "../../assets/images/clock.svg"
 import eye from "../../assets/images/eye.svg"
 import "./card.scss"
-function Card() {
+function Card(props) {
   return (
     <>
-      <article className='card'>
+      <article className='card'{...props}>
         <div className="card__img">
           <img src={thumbnail} alt="thumbnail" className='card__thumbnail' />
         </div>

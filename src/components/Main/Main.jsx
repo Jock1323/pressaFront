@@ -4,7 +4,9 @@ import Filter from '../Filter/Filter'
 import boy from "../../assets/images/boy.png"
 import boy2 from "../../assets/images/boy2.png"
 import "./main.scss"
+import { useNavigate } from 'react-router-dom'
 function Main() {
+  const navigate=useNavigate()
   return (
     <>
       <main className='main'>
@@ -18,7 +20,7 @@ function Main() {
           <div className="container">
             <h3 className='news__title'>Oxirgi e'lonlar</h3>
             <div className="news__flex">
-            <Card/>
+              <Card onClick={ ()=>navigate("/singlePage")}/>
             <Card/>
             <Card/>
             <Card/>
