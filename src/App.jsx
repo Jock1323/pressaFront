@@ -6,6 +6,7 @@ import Footer from './components/Footer/Footer'
 import SinglePage from './components/SinglePage/SinglePage'
 import About from './components/About/About'
 import Poster from './components/Poster/Poster'
+import Login from './components/Login/Login'
 function App() {
   return (
     <>
@@ -14,9 +15,10 @@ function App() {
         <Route path='/' element={<Main />} />
         <Route path='/singlePage' element={<SinglePage />} />
         <Route path='/about' element={<About />} />
-        <Route path='/poster' element={ <Poster/>} />
+        <Route path='/poster' element={<Poster />} />
+        <Route path='/login' element={  <Login/>} />
       </Routes>
-      <Footer/>
+      <Footer />
     </>
   )
 }

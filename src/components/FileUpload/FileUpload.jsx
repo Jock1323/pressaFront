@@ -46,13 +46,13 @@ function FileUpload(props) {
 			</label>
 
 			<span className="uploaded-files-list">
-				{uploadedFiles.map(file => (
-          <>
+				{uploadedFiles.map((file,index) => (
+          <span key={index}>
                  <span className='uploaded-files'>
             {file.name.slice(0,10)}
             <span className='uploaded-files-active'>Uploaded</span>
             </span>
-          </>
+          </span>
         ))}
 			</span>
     </>
