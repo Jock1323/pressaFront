@@ -7,7 +7,9 @@ function Navbar() {
       <nav className="nav">
         <ul className='nav__list'>
           <li className="nav__item">
-            <NavLink className="nav__link">Biz haqimizda</NavLink>
+            <NavLink to={'/about'}   className={({ isActive }) =>
+              isActive ? "nav__link-active" : "nav__link"
+            }>Biz haqimizda</NavLink>
           </li>
           <li className="nav__item">
             <NavLink className="nav__link">Savol va javoblar</NavLink>
