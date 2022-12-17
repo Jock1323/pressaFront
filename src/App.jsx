@@ -5,6 +5,7 @@ import{Routes,Route} from 'react-router-dom'
 import Footer from './components/Footer/Footer'
 import SinglePage from './components/SinglePage/SinglePage'
 import About from './components/About/About'
+import Poster from './components/Poster/Poster'
 function App() {
   return (
     <>
@@ -12,7 +13,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Main />} />
         <Route path='/singlePage' element={<SinglePage />} />
-        <Route path='/about' element={<About/> } />
+        <Route path='/about' element={<About />} />
+        <Route path='/poster' element={ <Poster/>} />
       </Routes>
       <Footer/>
     </>

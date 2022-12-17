@@ -1,10 +1,11 @@
 import React from 'react'
 import './header.scss'
-import { NavLink } from 'react-router-dom'
+import { NavLink,useNavigate } from 'react-router-dom'
 import searchLogo from "../../assets/images/search.svg"
 import plusLogo from "../../assets/images/plus.svg"
 import Navbar from '../Navbar/Navbar'
 function Header() {
+  const navigate=useNavigate()
   return (
     <>
       <header className='header'>
@@ -18,7 +19,7 @@ function Header() {
               </label>
             </form>
             <Navbar />
-            <button className='header__button'>
+            <button className='header__button' onClick={()=>navigate("/poster")}>
               <img src={ plusLogo} alt="plus logo" className='header__button__logo' />
               E'lon berish
             </button>
