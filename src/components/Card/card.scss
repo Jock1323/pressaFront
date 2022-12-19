@@ -42,6 +42,9 @@
   line-height: 21px;
   margin-left: 13px;
 }
+#card__author{
+  text-transform: capitalize;
+}
 .card__img:hover{
   img{
     transform: scale(1.2) rotate(10deg);

@@ -12,39 +12,41 @@ function Card(props) {
     <>
       <article className='card'{...props}>
         <div className="card__img">
-          <img src={thumbnail} alt="thumbnail" className='card__thumbnail' />
+          <img src={props.data.image} alt="thumbnail" className='card__thumbnail' />
         </div>
         <div className="card__body">
           <h4 className="card__title">
-          Alisher Isaevdan biznes va IT bo’yicha master klass
+            {
+              props.data.title
+            }
           </h4>
           <div className="card__body__inner">
             <div className="card__body__left">
             <div className="card__info">
               <img src={user} alt="user logo" />
-              <div className="card__text" id='card__author'>Alisher Isaev</div>
+                <div className="card__text" id='card__author'>{props.data.speaker}</div>
             </div>
             <div className="card__info">
               <img src={calendar} alt="user logo" />
-              <div className="card__text" id='card__author'>01/12/2002</div>
+                <div className="card__text" id='card__author'>{`${new Date(props.data.date).getDate()}/${new Date(props.data.date).getMonth()}/${new Date(props.data.date).getFullYear()}`}</div>
             </div>
             <div className="card__info">
               <img src={online} alt="onlime logo" />
-              <div className="card__text" id='card__author'>Online</div>
+                <div className="card__text" id='card__author'>{  props.data.status}</div>
             </div>
             </div>
             <div className="card__body__right">
             <div className="card__info">
               <img src={chart} alt="chart logo" />
-              <div className="card__text" id='card__author'>Tadbirkor</div>
+                <div className="card__text" id='card__author'>{ props.data.proffesion}</div>
             </div>
             <div className="card__info">
               <img src={clock} alt="user logo" />
-              <div className="card__text" id='card__author'>15:00</div>
+                <div className="card__text" id='card__author'>{ props.data.vaqt}</div>
             </div>
             <div className="card__info">
               <img src={eye} alt="onlime logo" />
-              <div className="card__text" id='card__author'>13</div>
+                <div className="card__text" id='card__author'>{ props.data.status}</div>
             </div>
             </div>
           </div>

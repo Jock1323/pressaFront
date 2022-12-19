@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {useNavigate} from "react-router-dom"
 import "./poster.scss"
 import house from "../../assets/images/house.svg"
@@ -6,9 +6,22 @@ import Input from "../Input/Input"
 import CompanyForm from "../CompanyForm/CompanyForm"
 import PersonForm from "../PersonForm/PersonForm"
 import FileUpload from '../FileUpload/FileUpload'
+import {HOST} from "../../config/config"
 function Poster() {
   const navigate = useNavigate()
+  const [category,setCategory]=useState([])
+  const [subcategory,setSubCategory]=useState([])
   const [radio,setRadio]=useState(true)
+  const allCategories = () => {
+    fetch(`${HOST}/categories`).then(res => res.json()).then(data => setCategory(data.data))
+  }
+  const allSubcategories = () => {
+    fetch(`${HOST}/subcategories`).then(res => res.json()).then(data => setSubCategory(data.data))
+  }
+  useEffect(() => {
+    allCategories()
+    allSubcategories()
+  },[])
   return (
     <section className='poster'>
       <div className="container">
@@ -32,17 +45,21 @@ function Poster() {
                 <div className="poster__date__wrapper">
                 <span className='poster__date__label' style={{ "color": "#333" }}>Yo’nalishni belgilang</span>
                 <select className='poster__direction'>
-                  <option value="1">Information technoligies</option>
-                  <option value="2">Nimadir</option>
-                  <option value="3">Nimadir</option>
+                    {
+                      category.length && category.map((item,index) => (
+                        <option key={index} value={item.category_id}>{ item.category_title}</option>
+                      ))
+                 }
                 </select>
                 </div>
                 <div className="poster__date__wrapper">
                 <span className='poster__date__label' style={{ "color": "#333" }}>Ichki yo’nalishn</span>
                 <select className='poster__direction'>
-                  <option value="1">Information technoligies</option>
-                  <option value="2">Nimadir</option>
-                  <option value="3">Nimadir</option>
+                    {
+                      subcategory.length && subcategory.map((item,index) => {
+                         return <option key={index} value={item.subcategoryid}>{ item.subcategorytitle}</option>
+                      })
+                    }
                 </select>
                 </div>
               </div>

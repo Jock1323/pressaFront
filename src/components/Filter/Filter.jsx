@@ -6,8 +6,10 @@ import arrowLogo from "../../assets/images/arrow-down.svg"
 import gridLogo from "../../assets/images/view-grid.svg"
 import onlineLogo from "../../assets/images/status-online.svg"
 import offlineLogo from "../../assets/images/status-offline.svg"
-function Filter() {
+import { HOST } from '../../config/config'
+function Filter({category,users}) {
   const [date, setDate] = useState(new Date())
+  console.log(users);
   const clickItem = () => {
     const elItem = document.querySelectorAll(".filter__item")
     const elItemInner = document.querySelectorAll(".filter__item__inner")
@@ -49,43 +51,21 @@ function Filter() {
           <img src={arrowLogo} alt="arrow down" className='filter__arrow'/>
           <div className='filter__item__inner' id='filter__item__inner-grid'>
             <div className="filter__item__inner-box">
-              <div className='filter__category'>
-                <h4 className='filter__category__title'>IT</h4>
-                <div className='filter__subcategory'>
-                  <input type="checkbox" className='filter__checkbox' />
-                  <span className='filter__subcategry__title'>Web dasturlash</span>
-                </div>
-                <div className='filter__subcategory'>
-                  <input type="checkbox" className='filter__checkbox' />
-                  <span className='filter__subcategry__title'>Mobile dasturlash</span>
-                </div>
+              {
+                category.length && category.map((item,index) => (
+                  <div key={index} className='filter__category'>
+                    <h4 className='filter__category__title'>{ item.category_title}</h4>
+                    {
+                      item.subcategories.map(subcategory => (
+                        <div key={subcategory.subcategoryid} className='filter__subcategory'>
+                          <input type="checkbox" className='filter__checkbox' />
+                          <span className='filter__subcategry__title'>{ subcategory.subcategorytitle}</span>
+                        </div>
+                      ))
+                    }
               </div>
-            </div>
-            <div className="filter__item__inner-box">
-              <div className='filter__category'>
-                <h4 className='filter__category__title'>IT</h4>
-                <div className='filter__subcategory'>
-                  <input type="checkbox" className='filter__checkbox' />
-                  <span className='filter__subcategry__title'>Web dasturlash</span>
-                </div>
-                <div className='filter__subcategory'>
-                  <input type="checkbox" className='filter__checkbox' />
-                  <span className='filter__subcategry__title'>Mobile dasturlash</span>
-                </div>
-              </div>
-            </div>
-            <div className="filter__item__inner-box">
-              <div className='filter__category'>
-                <h4 className='filter__category__title'>IT</h4>
-                <div className='filter__subcategory'>
-                  <input type="checkbox" className='filter__checkbox' />
-                  <span className='filter__subcategry__title'>Web dasturlash</span>
-                </div>
-                <div className='filter__subcategory'>
-                  <input type="checkbox" className='filter__checkbox' />
-                  <span className='filter__subcategry__title'>Mobile dasturlash</span>
-                </div>
-              </div>
+                ))
+              }
             </div>
           </div>
         </li>
@@ -114,10 +94,14 @@ function Filter() {
           <img src={arrowLogo} alt="arrow down" className='filter__arrow'/>
           <div className='filter__item__inner'>
             <div className="filter__item__inner-box">
-                <div className='filter__subcategory' id='filter__changed__subcategory'>
+              {
+                users.map(item => (
+                  <div key={item.user_id} className='filter__subcategory' id='filter__changed__subcategory'>
                   <input type="checkbox" className='filter__checkbox' />
-                  <span className='filter__subcategry__title'>Mirsidiq Mirzokirov</span>
+                    <span className='filter__subcategry__title'>{ item.fullname}</span>
                 </div>
+                ))
+              }
             </div>
           </div>
         </li>

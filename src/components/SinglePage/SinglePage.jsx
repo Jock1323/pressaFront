@@ -23,7 +23,8 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import './single.scss'
 
-function SinglePage() {
+function SinglePage({ item}) {
+  console.log(item);
   const navigate = useNavigate()
   const swiperRef = useRef();
   return (
@@ -135,12 +136,12 @@ function SinglePage() {
             }}
             className="recomended__slider"
       >
+        {/* <SwiperSlide><Card/></SwiperSlide>
         <SwiperSlide><Card/></SwiperSlide>
         <SwiperSlide><Card/></SwiperSlide>
         <SwiperSlide><Card/></SwiperSlide>
         <SwiperSlide><Card/></SwiperSlide>
-        <SwiperSlide><Card/></SwiperSlide>
-        <SwiperSlide><Card/></SwiperSlide>
+        <SwiperSlide><Card/></SwiperSlide> */}
       </Swiper>
           </div>
           <div className="container">
